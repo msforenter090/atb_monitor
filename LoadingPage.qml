@@ -13,6 +13,7 @@ ColumnLayout {
         Image {
             id: logo
             source: "images/logo.jpg"
+            fillMode: Image.PreserveAspectFit
         }
     }
 
@@ -28,7 +29,7 @@ ColumnLayout {
         Image {
             id: app
             source: "images/logo.jpg"
-
+            fillMode: Image.PreserveAspectFit
         }
     }
 }
