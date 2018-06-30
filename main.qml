@@ -1,28 +1,33 @@
-import QtQuick 2.11
-import QtQuick.Window 2.11
+import QtQuick 2.9
 import QtQuick.Controls 2.2
 
-Window {
+ApplicationWindow {
     visible: true
-    width: 2 * Screen.width / 3
-    height: 2 * Screen.height / 3
-    title: qsTr("Hello World")
+    width: 640
+    height: 480
+    title: qsTr("Tabs")
 
-    StackView {
-        id: stack
-        initialItem: view
+    SwipeView {
+        id: swipeView
         anchors.fill: parent
+        currentIndex: tabBar.currentIndex
 
-        Component {
-            id: view
+        Page1Form {
+        }
 
-            MouseArea {
-                Text {
-                    text: stack.depth
-                    anchors.centerIn: parent
-                }
-                onClicked: stack.push(view)
-            }
+        Page2Form {
+        }
+    }
+
+    footer: TabBar {
+        id: tabBar
+        currentIndex: swipeView.currentIndex
+
+        TabButton {
+            text: qsTr("Page 1")
+        }
+        TabButton {
+            text: qsTr("Page 2")
         }
     }
 }
