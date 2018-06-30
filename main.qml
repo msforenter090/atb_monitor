@@ -8,15 +8,21 @@ Window {
     height: 2 * Screen.height / 3
     title: qsTr("Hello World")
 
-    SwipeView {
-        id: swipeView
+    StackView {
+        id: stack
+        initialItem: view
         anchors.fill: parent
-        currentIndex: 0
 
-        Page1 {
-        }
+        Component {
+            id: view
 
-        Page2 {
+            MouseArea {
+                Text {
+                    text: stack.depth
+                    anchors.centerIn: parent
+                }
+                onClicked: stack.push(view)
+            }
         }
     }
 }
